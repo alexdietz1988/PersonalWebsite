@@ -47,6 +47,12 @@ section {
 
 img {
 	display: inline;
+	width: 100%;
+	margin: 0 20px;
+}
+
+.inline-image {
+	display: inline-block;
 	width: 35%;
 	height: 35%;
 	margin: 0 20px;
