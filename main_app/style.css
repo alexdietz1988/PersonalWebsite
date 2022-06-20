@@ -1,0 +1,59 @@
+body {
+	width: 800px;
+	max-width: 80vw;
+	margin: 0 auto;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+header, h2 {
+	text-align: center;
+}
+
+nav ul {
+	padding-left: 0;
+}
+
+nav li {
+	display: inline;
+	margin: 10px;
+}
+
+.philosophy-article {
+	line-height: 1.5;
+}
+
+a {
+	text-decoration: none;
+}
+
+section {
+	margin: 30px 0 50px 0;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.description {
+	display: inline;
+	margin: 0 20px;
+	width: 35%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+img {
+	display: inline;
+	width: 35%;
+	height: 35%;
+	margin: 0 20px;
+}
+
+@media screen and (max-width: 500px) {
+	.description, img {
+		width: 85%
+	}
+}
