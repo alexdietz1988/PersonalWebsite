@@ -78,7 +78,10 @@ img {
 }
 
 @media screen and (max-width: 500px) {
-	.description, img {
+	.description {
 		width: 85%
+	}
+	.inline-image {
+		width: 100%
 	}
 }
