@@ -21,7 +21,7 @@ class Blog(TemplateView):
         return context
 
 class PostDetail(TemplateView):
-    template_name = "blog/post-detail.html"
+    template_name = "blog/posts/post-detail.html"
 
     def get_context_data(self, pk, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -31,22 +31,22 @@ class PostDetail(TemplateView):
 class PostCreate(CreateView):
     model = Post
     fields = ['title', 'text', 'tags']
-    template_name = "blog/post-create.html"
+    template_name = "blog/posts/post-create.html"
     success_url = "/blog"
 
 class PostUpdate(UpdateView):
     model = Post
     fields = ['title', 'text', 'tags']
-    template_name = "blog/post-update.html"
+    template_name = "blog/posts/post-update.html"
     success_url = "/blog"
 
 class PostDelete(DeleteView):
     model = Post
-    template_name = "blog/post-delete.html"
+    template_name = "blog/posts/post-delete.html"
     success_url = "/blog"
 
 class TagList(TemplateView):
-    template_name = "blog/tag-list.html"
+    template_name = "blog/tags/tag-list.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -56,22 +56,22 @@ class TagList(TemplateView):
 class TagCreate(CreateView):
     model = Tag
     fields = ['name']
-    template_name = "blog/tag-create.html"
+    template_name = "blog/tags/tag-create.html"
     success_url = "/tags"
 
 class TagUpdate(UpdateView):
     model = Tag
     fields = ['name']
-    template_name = "blog/tag-update.html"
+    template_name = "blog/tags/tag-update.html"
     success_url = "/tags"
 
 class TagDelete(DeleteView):
     model = Tag
-    template_name = "blog/tag-delete.html"
+    template_name = "blog/tags/tag-delete.html"
     success_url = "/tags"
 
 class TaggedPosts(TemplateView):
-    template_name = "blog/tagged-posts.html"
+    template_name = "blog/tags/tagged-posts.html"
 
     def get_context_data(self, pk, **kwargs):
         context = super().get_context_data(**kwargs)
