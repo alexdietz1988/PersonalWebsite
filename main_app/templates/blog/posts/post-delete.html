@@ -10,7 +10,7 @@
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Delete" />
-    <p><a href="{% url 'post-detail' post.pk %}">Cancel</a></p>
+    <p><a href="{% url 'postdetail' post.pk %}">Cancel</a></p>
 </form>
 
 {% endblock %}

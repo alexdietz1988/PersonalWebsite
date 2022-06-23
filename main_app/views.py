@@ -30,13 +30,13 @@ class PostDetail(TemplateView):
 
 class PostCreate(CreateView):
     model = Post
-    fields = ['title', 'text', 'tags']
+    fields = ['title', 'body', 'tags']
     template_name = "blog/posts/post-create.html"
     success_url = "/blog"
 
 class PostUpdate(UpdateView):
     model = Post
-    fields = ['title', 'text', 'tags']
+    fields = ['title', 'body', 'tags']
     template_name = "blog/posts/post-update.html"
     success_url = "/blog"
 
