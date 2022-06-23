@@ -4,13 +4,6 @@ body {
 	margin: 0 auto;
 }
 
-main {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: center;
-	align-items: center;
-}
-
 li {
 	line-height: 1.5;
 }
@@ -27,4 +20,11 @@ h2 {
 
 img {
 	width: 100%;
+}
+
+.blog {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
