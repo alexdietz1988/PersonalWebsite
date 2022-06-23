@@ -6,11 +6,17 @@
 
 <p><a href={% url "post-create" %}>New Post</a> | <a href={% url "tag-list" %}>Tags</a></p>
 
+<p>
+{% for tag in tags %}
+    <a href="{% url "tagged-posts" tag.pk %}">{{tag.name}}</a>
+{% endfor %}
+</p>
+
 {% for post in posts %}
     <div class="post">
-        <a href={% url "postdetail" post.pk %}><h3 class="post-title">{{post.title}}</h3></a>
+        <h3 class="post-title">{{post.title}}</h3>
         {{post.body|safe}}
-        <p><em>{{post.created_at}}</em></p>
+        <p><a href={% url "postdetail" post.pk %}><em>{{post.created_at}}</em></a></p>
     </div>
 {% endfor %}
 
