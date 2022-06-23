@@ -4,16 +4,16 @@ from .models import Post, Tag
 
 # Create your views here.
 class Home(TemplateView):
-    template_name = "home.html"
+    template_name = "portfolio/home.html"
 
 class Projects(TemplateView):
-    template_name = "projects.html"
+    template_name = "portfolio/projects.html"
 
 class Publications(TemplateView):
-    template_name = "publications.html"
+    template_name = "portfolio/publications.html"
 
 class Blog(TemplateView):
-    template_name = "blog.html"
+    template_name = "blog/blog.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -21,7 +21,7 @@ class Blog(TemplateView):
         return context
 
 class PostDetail(TemplateView):
-    template_name = "post-detail.html"
+    template_name = "blog/post-detail.html"
 
     def get_context_data(self, pk, **kwargs):
         context = super().get_context_data(**kwargs)
