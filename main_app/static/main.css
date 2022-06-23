@@ -21,10 +21,3 @@ h2 {
 img {
 	width: 100%;
 }
-
-.blog {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
