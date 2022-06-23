@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import CreateView
 from .models import Post, Tag
 
 # Create your views here.
@@ -27,3 +27,9 @@ class PostDetail(TemplateView):
         context = super().get_context_data(**kwargs)
         context['post'] = Post.objects.get(pk=pk)
         return context
+
+class PostCreate(CreateView):
+    model = Post
+    fields = ['title', 'text', 'tags']
+    template_name = "blog/post-create.html"
+    success_url = "/blog"

@@ -7,5 +7,6 @@ urlpatterns = [
     path('publications', views.Publications.as_view(), name="publications"),
 
     path('blog', views.Blog.as_view(), name="blog"),
-    path('post/<int:pk>', views.PostDetail.as_view(), name="post-detail")
+    path('post/<int:pk>', views.PostDetail.as_view(), name="post-detail"),
+    path('post/new', views.PostCreate.as_view(), name="post-create")
 ]

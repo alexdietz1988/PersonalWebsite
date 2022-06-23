@@ -3,6 +3,9 @@
 {% block title %}Blog{% endblock %}
 
 {% block body %}
+
+<a href={% url "post-create" %}>New post</a>
+
 {% for post in posts %}
     <div>
     <a href={% url "post-detail" post.pk %}><h3>{{post.title}}</h3></a>
@@ -10,4 +13,5 @@
     <p><em>{{post.created_at}}</em></p>
     </div>
 {% endfor %}
+
 {% endblock %}
