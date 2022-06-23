@@ -69,3 +69,12 @@ class TagDelete(DeleteView):
     model = Tag
     template_name = "blog/tag-delete.html"
     success_url = "/tags"
+
+class TaggedPosts(TemplateView):
+    template_name = "blog/tagged-posts.html"
+
+    def get_context_data(self, pk, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tag'] = Tag.objects.get(pk=pk)
+        context['posts'] = Post.objects.filter(tags = pk)
+        return context

@@ -7,7 +7,7 @@
 
 
 {% for tag in tags %}
-    <p>{{tag.name}} | <a href="{% url 'tag-update' tag.pk %}">rename</a> | <a href="{% url 'tag-delete' tag.pk %}">delete</a></p>
+    <p><a href="{% url "tagged-posts" tag.pk %}">{{tag.name}}</a> | <a href="{% url 'tag-update' tag.pk %}">rename</a> | <a href="{% url 'tag-delete' tag.pk %}">delete</a></p>
 {% endfor %}
 
 <p><a href={% url "tag-create" %}>New tag</a></p>
