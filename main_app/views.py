@@ -34,6 +34,12 @@ class PostCreate(CreateView):
     template_name = "blog/post-create.html"
     success_url = "/blog"
 
+class PostUpdate(UpdateView):
+    model = Post
+    fields = ['title', 'text', 'tags']
+    template_name = "blog/post-update.html"
+    success_url = "/blog"
+
 class PostDelete(DeleteView):
     model = Post
     template_name = "blog/post-delete.html"
