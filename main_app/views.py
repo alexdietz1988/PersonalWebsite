@@ -1,5 +1,5 @@
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post, Tag
 
 # Create your views here.
@@ -32,6 +32,11 @@ class PostCreate(CreateView):
     model = Post
     fields = ['title', 'text', 'tags']
     template_name = "blog/post-create.html"
+    success_url = "/blog"
+
+class PostDelete(DeleteView):
+    model = Post
+    template_name = "blog/post-delete.html"
     success_url = "/blog"
 
 class TagCreate(CreateView):
