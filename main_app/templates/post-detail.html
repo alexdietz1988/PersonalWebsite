@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}Blog{% endblock %}
+{% block title %}{{post.title}}{% endblock %}
 
 {% block body %}
-{% for post in posts %}
     <div>
-    <a href={% url "post-detail" post.pk %}><h3>{{post.title}}</h3></a>
+    <h3>{{post.title}}</h3>
     <p>{{post.text}}</p>
     <p><em>{{post.created_at}}</em></p>
     </div>
-{% endfor %}
 {% endblock %}

@@ -19,3 +19,11 @@ class Blog(TemplateView):
         context = super().get_context_data(**kwargs)
         context['posts'] = Post.objects.all()
         return context
+
+class PostDetail(TemplateView):
+    template_name = "post-detail.html"
+
+    def get_context_data(self, pk, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post'] = Post.objects.get(pk=pk)
+        return context
