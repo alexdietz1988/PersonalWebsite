@@ -33,3 +33,9 @@ class PostCreate(CreateView):
     fields = ['title', 'text', 'tags']
     template_name = "blog/post-create.html"
     success_url = "/blog"
+
+class TagCreate(CreateView):
+    model = Tag
+    fields = ['name']
+    template_name = "blog/tag-create.html"
+    success_url = "/blog"

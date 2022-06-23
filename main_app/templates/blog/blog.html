@@ -5,6 +5,7 @@
 {% block body %}
 
 <a href={% url "post-create" %}>New post</a>
+<a href={% url "tag-create" %}>New tag</a>
 
 {% for post in posts %}
     <div>
