@@ -45,8 +45,27 @@ class PostDelete(DeleteView):
     template_name = "blog/post-delete.html"
     success_url = "/blog"
 
+class TagList(TemplateView):
+    template_name = "blog/tag-list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()
+        return context
+
 class TagCreate(CreateView):
     model = Tag
     fields = ['name']
     template_name = "blog/tag-create.html"
-    success_url = "/blog"
+    success_url = "/tags"
+
+class TagUpdate(UpdateView):
+    model = Tag
+    fields = ['name']
+    template_name = "blog/tag-update.html"
+    success_url = "/tags"
+
+class TagDelete(DeleteView):
+    model = Tag
+    template_name = "blog/tag-delete.html"
+    success_url = "/tags"
