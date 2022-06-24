@@ -4,14 +4,14 @@
 This is a personal website for myself, including a portfolio of my coding work and philosophy publications, and a blog. It's built in Django.
 
 ## Wireframes
-![image](wireframes.png)
+![image](main_app/images/wireframes.png)
 
 ## ERD
-![image](erd.png)
+![image](main_app/images/erd.png)
 
 ## Screenshots
-![image](screenshot-about.png)
-![image](screenshot-blog.png)
+![image](main_app/images/screenshot-about.png)
+![image](main_app/images/screenshot-blog.png)
 
 ## Development Roadmap
 - [ ] User accounts
