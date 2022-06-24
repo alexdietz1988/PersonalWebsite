@@ -8,6 +8,7 @@ django = "*"
 python-dotenv = "*"
 django-heroku = "*"
 gunicorn = "*"
+django-ckeditor = "*"
 
 [dev-packages]
 
