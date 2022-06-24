@@ -28,14 +28,6 @@ class PostDetail(TemplateView):
         context['post'] = Post.objects.get(pk=pk)
         return context
 
-class TagList(TemplateView):
-    template_name = "blog/tag-list.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tags'] = Tag.objects.all()
-        return context
-
 class TaggedPosts(TemplateView):
     template_name = "blog/tagged-posts.html"
 
