@@ -9,3 +9,9 @@
 	width: 500px;
 	line-height: 1.4;
 }
+
+@media screen and (max-width: 525px) {
+	.post {
+		width: 80vw;
+	}
+}
