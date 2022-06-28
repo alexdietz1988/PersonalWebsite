@@ -26,6 +26,8 @@
             <a href="{% url "tagged-posts" tag.pk %}">{{tag.name}}</a>
         {% endif %}
     {% endfor %}
-    </p>
+</p>
+
+<p><a href="{% url "login" %}">Member Login</a></p>
 
 {% endblock %}

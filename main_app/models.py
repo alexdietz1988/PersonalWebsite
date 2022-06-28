@@ -16,6 +16,7 @@ class Post(models.Model):
     title = models.CharField(max_length=250)
     body = RichTextField(blank=True, null=True)
     tags = models.ManyToManyField(Tag, related_name="posts")
+    private = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
