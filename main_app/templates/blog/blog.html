@@ -4,8 +4,7 @@
 
 {% block body %}
 
-<h2>Blog</h2>
-
+<div class="posts">
 {% for post in posts %}
     {% if post.private == False or user.membership.member == True %}
         <div class="post">
@@ -23,22 +22,6 @@
         </div>
     {% endif %}
 {% endfor %}
-
-<p>
-    <b>All tags</b>: 
-    {% for tag in tags %}
-        {% if tag.posts.all|length > 0 and tag.name != 'private' %}
-            <a href="{% url "tagged-posts" tag.pk %}">{{tag.name}}</a>
-        {% endif %}
-    {% endfor %}
-</p>
-
-<p>
-{% if user.membership.member == True %}
-    You are logged in as a member. <a href="{% url "logout" %}">Logout</a>
-{% else %}
-    <a href="{% url "login" %}">Member Login</a>
-{% endif %}
-</p>
+</div>
 
 {% endblock %}

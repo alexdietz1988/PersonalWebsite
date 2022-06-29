@@ -25,10 +25,33 @@
 		</nav>
 	</header>
 
-	<main class="blog">
-    
+	<h2>Blog</h2>
+
+	<main>
         {% block body %}
         {% endblock%}
+
+	<aside>
+		<h3>Sidebar</h3>
+
+		<p>
+			<b>tags</b>: 
+			{% for tag in tags %}
+				{% if tag.posts.all|length > 0 and tag.name != 'private' %}
+					<a href="{% url "tagged-posts" tag.pk %}">{{tag.name}}</a>
+				{% endif %}
+			{% endfor %}
+		</p>
+
+		<p>
+			{% if user.membership.member == True %}
+				You are logged in as a member. <a href="{% url "logout" %}">Logout</a>
+			{% else %}
+				<div class="login"><a href="{% url "login" %}"><em>Member Login</em></a></div>
+			{% endif %}
+		</p>
+
+	</aside>
 
 	</main>
 

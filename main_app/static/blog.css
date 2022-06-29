@@ -1,13 +1,24 @@
-.blog {
+main {
+	display: flex;
+	flex-direction: row;
+}
+
+.posts {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding-right: 10px;
+	width: 500px;
 }
 
 .post {
-	width: 500px;
 	line-height: 1.4;
+}
+
+aside {
+	width: 300px;
+	padding-left: 20px;
 }
 
 .private {
@@ -18,8 +29,27 @@
 	border-radius: 10px;
 }
 
+.login {
+	display: inline-block;
+	color: white;
+	background-color: darkslategray;
+	padding: 5px;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+
+.login a {
+	color: lightblue;
+}
+
 @media screen and (max-width: 525px) {
-	.post {
-		width: 80vw;
+
+	main {
+		flex-direction: column-reverse;
+	}
+
+	.posts, aside {
+		padding: 0;
+		width: 100%;
 	}
 }
