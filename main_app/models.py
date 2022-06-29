@@ -1,6 +1,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 
+from django.contrib.auth.models import User
+
 # Create your models here.
 
 class Tag(models.Model):
@@ -24,3 +26,10 @@ class Post(models.Model):
     
     class Meta:
         ordering = ['-created_at']
+
+class Membership(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='membership')
+    member = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user.username
