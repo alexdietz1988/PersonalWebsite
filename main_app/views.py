@@ -43,10 +43,10 @@ class AddComment(View):
         Comment.objects.create(user=user, body=body, post=post, created_at=datetime.now)
         return redirect(f'/post/{pk}')
 
-class DeleteComment(DeleteView):
-    model = Comment
-    template_name = "blog/delete-comment-confirmation.html"
-    success_url = "/blog"
+class DeleteComment(View):
+    def get(self, request, comment, post):
+        Comment.objects.get(pk=comment).delete()
+        return redirect(f'/post/{post}')
 
 class TaggedPosts(TemplateView):
     template_name = "blog/tagged-posts.html"
