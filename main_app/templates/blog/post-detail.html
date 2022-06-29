@@ -22,6 +22,15 @@
 {% endfor %}
 </div>
 
+<div>
+<h4>Leave a Comment</h4>
+<form action="{% url "add-comment" post.pk %}" method='post'>
+    {% csrf_token %}
+    <input type='text' name='body' />
+    <input type='submit' value='Submit' />
+</form>
+</div>
+
 </div>
 
 {% endblock %}
