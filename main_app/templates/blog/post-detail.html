@@ -17,8 +17,10 @@
 <div>
 <h4>Comments</h4>
 {% for comment in post.comments.all %}
-    {{comment.body|safe}}
-    <em>{{comment.user}}, {{comment.created_at}}</em>
+    <p>
+        {{comment.body|safe}}
+        <em>{{comment.user}}, {{comment.created_at}}</em>
+    </p>
 {% endfor %}
 </div>
 
@@ -27,7 +29,7 @@
 <form action="{% url "add-comment" post.pk %}" method='post'>
     {% csrf_token %}
     {{form.as_p}}
-    <input type='text' value='body' />
+    <input type='text' name='body' />
     <input type='submit' value='Submit' />
 </form>
 </div>
