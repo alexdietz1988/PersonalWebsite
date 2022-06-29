@@ -7,19 +7,21 @@
 <h2>Blog</h2>
 
 {% for post in posts %}
-    <div class="post">
-        <h3 class="post-title">{{post.title}}</h3>
-        {% if post.private == True %}
-            <div class="private"><em>Private</em></div>
-        {% endif %}
-        {{post.body|safe}}
-        <p>
-            <a href={% url "postdetail" post.pk %}><em>{{post.created_at}}</em></a> — tags:
-            {% for tag in post.tags.all %}
-                <a href="{% url "tagged-posts" tag.pk %}">{{tag}}</a>
-            {% endfor %}
-        </p>
-    </div>
+    {% if post.private == False or user.membership.member == True %}
+        <div class="post">
+            <h3 class="post-title">{{post.title}}</h3>
+            {% if post.private == True %}
+                <div class="private"><em>Private</em></div>
+            {% endif %}
+            {{post.body|safe}}
+            <p>
+                <a href={% url "postdetail" post.pk %}><em>{{post.created_at}}</em></a> — tags:
+                {% for tag in post.tags.all %}
+                    <a href="{% url "tagged-posts" tag.pk %}">{{tag}}</a>
+                {% endfor %}
+            </p>
+        </div>
+    {% endif %}
 {% endfor %}
 
 <p>
@@ -31,6 +33,12 @@
     {% endfor %}
 </p>
 
-<p><a href="{% url "login" %}">Member Login</a></p>
+<p>
+{% if user.membership.member == True %}
+    You are logged in as a member.
+{% else %}
+    <a href="{% url "login" %}">Member Login</a>
+{% endif %}
+</p>
 
 {% endblock %}
