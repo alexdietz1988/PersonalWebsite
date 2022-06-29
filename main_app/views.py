@@ -41,7 +41,7 @@ class AddComment(View):
         body = request.POST.get("body")
         post = Post.objects.get(pk=pk)
         Comment.objects.create(user=user, body=body, post=post, created_at=datetime.now)
-        return redirect('blog')
+        return redirect(f'/post/{pk}')
 
 class DeleteComment(DeleteView):
     model = Comment
