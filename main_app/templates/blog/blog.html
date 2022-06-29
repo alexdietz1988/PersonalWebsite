@@ -9,6 +9,9 @@
 {% for post in posts %}
     <div class="post">
         <h3 class="post-title">{{post.title}}</h3>
+        {% if post.private == True %}
+            <div class="private"><em>Private</em></div>
+        {% endif %}
         {{post.body|safe}}
         <p>
             <a href={% url "postdetail" post.pk %}><em>{{post.created_at}}</em></a> — tags:
@@ -22,7 +25,7 @@
 <p>
     <b>All tags</b>: 
     {% for tag in tags %}
-        {% if tag.posts.all|length > 0 %}
+        {% if tag.posts.all|length > 0 and tag.name != 'private' %}
             <a href="{% url "tagged-posts" tag.pk %}">{{tag.name}}</a>
         {% endif %}
     {% endfor %}
