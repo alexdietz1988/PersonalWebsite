@@ -26,7 +26,8 @@
 <h4>Leave a Comment</h4>
 <form action="{% url "add-comment" post.pk %}" method='post'>
     {% csrf_token %}
-    <input type='text' name='body' />
+    {{form.as_p}}
+    <input type='text' value='body' />
     <input type='submit' value='Submit' />
 </form>
 </div>

@@ -6,6 +6,8 @@ from .models import Post, Tag, Comment
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
+
+
 # Create your views here.
 class Home(TemplateView):
     template_name = "portfolio/home.html"
