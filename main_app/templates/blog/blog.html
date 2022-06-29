@@ -7,7 +7,7 @@
 {% for post in posts %}
     {% if post.private == False or user.membership.member == True %}
         <div class="post">
-            <h3 class="post-title">{{post.title}}</h3>
+            <h3 class="post-title"><a href="{% url "postdetail" post.pk %}">{{post.title}}</a></h3>
             {% if post.private == True %}
                 <div class="private"><em>Private</em></div>
             {% endif %}

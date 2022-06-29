@@ -30,6 +30,7 @@ class PostDetail(TemplateView):
     def get_context_data(self, pk, **kwargs):
         context = super().get_context_data(**kwargs)
         context['post'] = Post.objects.get(pk=pk)
+        context['tags'] = Tag.objects.all()
         return context
 
 class TaggedPosts(TemplateView):

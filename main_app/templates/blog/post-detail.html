@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 
-{% block title %}{{post.title}}{% endblock %}
+{% block title %}Blog | {{post.title}}{% endblock %}
 
 {% block body %}
 
@@ -15,11 +15,13 @@
 </p>
 
 <div>
-<h3>Comments</h3>
+<h4>Comments</h4>
 {% for comment in post.comments.all %}
     {{comment.body|safe}}
     <em>{{comment.user}}, {{comment.created_at}}</em>
 {% endfor %}
+</div>
+
 </div>
 
 {% endblock %}
