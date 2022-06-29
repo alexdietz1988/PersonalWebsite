@@ -33,7 +33,7 @@
 <form action="{% url "add-comment" post.pk %}" method='post'>
     {% csrf_token %}
     {{form.as_p}}
-    <input type='text' name='body' />
+    <textarea type='text' name='body' rows="4" cols="50"></textarea>
     <input type='submit' value='Submit' />
 </form>
 </div>
