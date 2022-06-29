@@ -5,8 +5,7 @@ from django.views.generic.base import TemplateView
 from .models import Post, Tag, Comment
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-
-
+from django.views.generic.edit import DeleteView
 
 # Create your views here.
 class Home(TemplateView):
@@ -44,6 +43,10 @@ class AddComment(View):
         Comment.objects.create(user=user, body=body, post=post, created_at=datetime.now)
         return redirect('blog')
 
+class DeleteComment(DeleteView):
+    model = Comment
+    template_name = "blog/delete-comment-confirmation.html"
+    success_url = "/blog"
 
 class TaggedPosts(TemplateView):
     template_name = "blog/tagged-posts.html"
