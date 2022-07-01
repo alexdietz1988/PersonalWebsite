@@ -64,6 +64,8 @@ class TaggedPosts(TemplateView):
     def get_context_data(self, pk, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tag'] = Tag.objects.get(pk=pk)
+        context['tags'] = Tag.objects.all()
+        context['posts'] = Post.objects.all()
         context['tagged_posts'] = Post.objects.filter(tags = pk)
         return context
 
