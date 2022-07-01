@@ -36,10 +36,8 @@
 
 	<aside>
 
-		<h3>Sidebar</h3>
-
 		<section>
-			<h4 class="sidebar-header">Recent posts</h4>
+			<h3 class="sidebar-header">Recent posts</h3>
 			<ul class="sidebar-list">
 			{% for post in posts %}
 				{% if post.private == False or user.membership.member and forloop.counter < 10 %}
