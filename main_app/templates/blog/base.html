@@ -14,7 +14,7 @@
 <body>
 
 	<header>
-		<h1>Alex Dietz</h1>
+		<h1><a href="{% url "home" %}">Alex Dietz</a></h1>
 		<nav>
 			<ul>
 				<li><a href="{% url 'home' %}">About Me</a></li>
@@ -25,10 +25,38 @@
 		</nav>
 	</header>
 
-	<main class="blog">
-    
-        {% block body %}
-        {% endblock%}
+	<h2><a href="{% url "blog" %}">Blog</a></h2>
+
+	<main>
+	
+	<div class="posts">
+		{% block body %}
+		{% endblock%}
+	</div>
+
+	<aside>
+		<h3>Sidebar</h3>
+
+		<p>
+			<b>tags</b>: 
+			{% for tag in tags %}
+				{% if tag.posts.all|length > 0 and tag.name != 'private' %}
+					<a href="{% url "tagged-posts" tag.pk %}">{{tag.name}}</a>
+				{% endif %}
+			{% endfor %}
+		</p>
+
+		<p>
+			{% if user.is_authenticated and user.membership.member %}
+				You are logged in as a member. <div class="button login"><a href="{% url "logout" %}">Logout</a></div>
+			{% elif user.is_authenticated %}
+				You are logged in as a non-member.
+			{% else %}
+				<div class="button login"><a href="{% url "login" %}"><em>Member Login</em></a></div>
+			{% endif %}
+		</p>
+
+	</aside>
 
 	</main>
 

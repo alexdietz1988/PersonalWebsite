@@ -1,17 +1,67 @@
-.blog {
+main {
+	display: flex;
+	flex-direction: row;
+}
+
+.posts {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	padding-right: 10px;
+	width: 500px;
 }
 
 .post {
-	width: 500px;
 	line-height: 1.4;
 }
 
+aside {
+	width: 300px;
+	padding-left: 20px;
+}
+
+.private {
+	display: inline;
+	color: white;
+	background-color: gray;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+.button {
+	padding: 5px;
+	border-radius: 10px;
+}
+
+.button a {
+	color: lightblue;
+}
+
+.login {
+	display: inline;
+	margin-top: 10px;
+	background-color: darkslategray;
+}
+
+.delete-comment {
+	background-color: lightgray;
+	font-size: small;
+	margin: 0 10px;
+}
+
+.delete-comment a {
+	color: black;
+}
+
+
 @media screen and (max-width: 525px) {
-	.post {
-		width: 80vw;
+
+	main {
+		flex-direction: column-reverse;
+	}
+
+	.posts, aside {
+		padding: 0;
+		width: 100%;
 	}
 }

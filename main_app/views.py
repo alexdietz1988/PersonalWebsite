@@ -1,5 +1,11 @@
+from datetime import datetime
+from django.views import View
+from django.shortcuts import redirect, render
 from django.views.generic.base import TemplateView
-from .models import Post, Tag
+from .models import Post, Tag, Comment
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import DeleteView
 
 # Create your views here.
 class Home(TemplateView):
@@ -26,7 +32,21 @@ class PostDetail(TemplateView):
     def get_context_data(self, pk, **kwargs):
         context = super().get_context_data(**kwargs)
         context['post'] = Post.objects.get(pk=pk)
+        context['tags'] = Tag.objects.all()
         return context
+
+class AddComment(View):
+    def post(self, request, pk):
+        user = self.request.user
+        body = request.POST.get("body")
+        post = Post.objects.get(pk=pk)
+        Comment.objects.create(user=user, body=body, post=post, created_at=datetime.now)
+        return redirect(f'/post/{pk}')
+
+class DeleteComment(View):
+    def get(self, request, comment, post):
+        Comment.objects.get(pk=comment).delete()
+        return redirect(f'/post/{post}')
 
 class TaggedPosts(TemplateView):
     template_name = "blog/tagged-posts.html"
@@ -36,3 +56,19 @@ class TaggedPosts(TemplateView):
         context['tag'] = Tag.objects.get(pk=pk)
         context['posts'] = Post.objects.filter(tags = pk)
         return context
+
+class Signup(View):
+    def get(self, request):
+        form = UserCreationForm()
+        context = {"form": form}
+        return render(request, "registration/signup.html", context)
+    
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("/blog")
+        else:
+            context = {"form": form}
+            return render(request, "registration/signup.html", context)

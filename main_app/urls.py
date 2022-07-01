@@ -9,4 +9,8 @@ urlpatterns = [
     path('blog', views.Blog.as_view(), name="blog"),
     path('tag/<int:pk>', views.TaggedPosts.as_view(), name="tagged-posts"),
     path('post/<int:pk>', views.PostDetail.as_view(), name="postdetail"),
+    path('post/<int:pk>/add-comment', views.AddComment.as_view(), name="add-comment"),
+    path('<int:post>/<int:comment>/delete-comment', views.DeleteComment.as_view(), name="delete-comment"),
+
+    path('accounts/signup', views.Signup.as_view(), name="signup"),
 ]

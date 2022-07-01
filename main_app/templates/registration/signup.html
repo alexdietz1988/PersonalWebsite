@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block body %}
+<h2>Sign Up</h2>
+
+<h3>Sign up to see private posts.</h3>
+
+<form method="post" action="{% url 'signup' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Sign Up" />
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{% endblock %}
