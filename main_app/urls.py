@@ -7,6 +7,7 @@ urlpatterns = [
     path('publications', views.Publications.as_view(), name="publications"),
 
     path('blog', views.Blog.as_view(), name="blog"),
+    path('archives', views.Archives.as_view(), name="archives"),
     path('tag/<int:pk>', views.TaggedPosts.as_view(), name="tagged-posts"),
     path('post/<int:pk>', views.PostDetail.as_view(), name="postdetail"),
     path('post/<int:pk>/add-comment', views.AddComment.as_view(), name="add-comment"),
