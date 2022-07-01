@@ -31,6 +31,7 @@ class Archives(TemplateView):
     template_name = "blog/archives.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()
         context['posts'] = Post.objects.all()
         return context
 
@@ -40,6 +41,7 @@ class PostDetail(TemplateView):
     def get_context_data(self, pk, **kwargs):
         context = super().get_context_data(**kwargs)
         context['post'] = Post.objects.get(pk=pk)
+        context['posts'] = Post.objects.all()
         context['tags'] = Tag.objects.all()
         return context
 
@@ -62,7 +64,7 @@ class TaggedPosts(TemplateView):
     def get_context_data(self, pk, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tag'] = Tag.objects.get(pk=pk)
-        context['posts'] = Post.objects.filter(tags = pk)
+        context['tagged_posts'] = Post.objects.filter(tags = pk)
         return context
 
 class Signup(View):

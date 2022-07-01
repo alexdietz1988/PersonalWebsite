@@ -4,16 +4,14 @@
 
 {% block body %}
 
-<h2>Posts in {{tag}} </h2>
+<h3>Posts in {{tag}} </h2>
 
 {% if user.membership.member %}
-    {% for post in posts %}
-        <div>
-            <a href={% url "postdetail" post.pk %}><h3>{{post.title}}</h3></a>
-            <p>{{post.text}}</p>
-            <p><em>{{post.created_at}}</em></p>
-        </div>
+<ul class="sidebar-list">
+    {% for post in tagged_posts %}
+        <li>{{post.created_at|date:'m/d'}} <a href="{% url "postdetail" post.pk %}">{{post.title}}</a></li>
     {% endfor %}
+</ul>
 {% endif %}
 
 {% endblock %}
