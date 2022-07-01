@@ -20,6 +20,20 @@ aside {
 	padding-left: 20px;
 }
 
+.sidebar-header {
+	margin: 10px 0;
+}
+
+.sidebar-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+section {
+	margin-bottom: 30px;
+}
+
 .private {
 	display: inline;
 	color: white;
