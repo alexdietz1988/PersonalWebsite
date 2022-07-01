@@ -14,7 +14,8 @@ This is a personal website for myself, including a portfolio of my coding work a
 ![image](main_app/images/screenshot-blog.png)
 
 ## Development Roadmap
-- [ ] User accounts
-- [ ] Comments on blog posts
-- [ ] Filter post access depending on user status
+- [x] User accounts
+- [x] Comments on blog posts
+- [x] Filter post access depending on user status
 - [ ] Archives page
+- [ ] Rich text comments
