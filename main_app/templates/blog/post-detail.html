@@ -6,42 +6,44 @@
 
 {% if post.private == False or user.membership.member %}
 <div class="post">
+    
 <h3>{{post.title}}</h3>
 <p class="postbody">{{post.body|safe}}</p>
 <p>
-    <a href={% url "postdetail" post.pk %}><em>{{post.created_at}}</em></a> — tags:
-    {% for tag in post.tags.all %}
-        <a href="{% url "tagged-posts" tag.pk %}">{{tag}}</a>
-    {% endfor %}
+    <a href={% url "postdetail" post.pk %}><em>{{post.created_at}}</em></a>
+    {% if user.membership.member %} — tags:
+        {% for tag in post.tags.all %}
+            <a href="{% url "tagged-posts" tag.pk %}">{{tag}}</a>
+        {% endfor %}
+    {% endif %}
 </p>
 {% endif %}
 
 {% if user.membership.member %}
-<div>
-<h4>Comments</h4>
-{% for comment in post.comments.all %}
-    <p>
-        {{comment.body}}<br />
-        <em>{{comment.user}} – {{comment.created_at}}</em>
-        {% if user == comment.user %}
-        <span class="button delete-comment"><a href={% url "delete-comment" post.pk comment.pk %}>Delete Comment</a></span>
-        {% endif %}
-        
-        
-    </p>
-{% endfor %}
-</div>
+    <div>
+    <h4>Comments</h4>
+    {% for comment in post.comments.all %}
+        <p>
+            {{comment.body}}<br />
+            <em>{{comment.user}} – {{comment.created_at}}</em>
+            {% if user == comment.user %}
+            <span class="button delete-comment"><a href={% url "delete-comment" post.pk comment.pk %}>Delete Comment</a></span>
+            {% endif %}
+            
+            
+        </p>
+    {% endfor %}
+    </div>
 
-<div>
-<h4>Leave a Comment</h4>
-<form action="{% url "add-comment" post.pk %}" method='post'>
-    {% csrf_token %}
-    {{form.as_p}}
-    <textarea type='text' name='body' rows="4" cols="50"></textarea><br />
-    <input type='submit' value='Submit' />
-</form>
-</div>
-
+    <div>
+    <h4>Leave a Comment</h4>
+    <form action="{% url "add-comment" post.pk %}" method='post'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <textarea type='text' name='body' rows="4" cols="50"></textarea><br />
+        <input type='submit' value='Submit' />
+    </form>
+    </div>
 {% endif %}
 
 </div>
