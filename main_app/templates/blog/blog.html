@@ -5,7 +5,7 @@
 {% block body %}
 
 {% for post in posts %}
-    {% if post.private == False or user.membership.member %}
+    {% if post.private == False or user.membership.member and forloop.counter < 10 %}
         <div class="post">
             <h3 class="post-title"><a href="{% url "postdetail" post.pk %}">{{post.title}}</a></h3>
             {% if post.private == True %}
