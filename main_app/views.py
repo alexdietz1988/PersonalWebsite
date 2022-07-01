@@ -1,4 +1,5 @@
 from datetime import datetime
+from pipes import Template
 from django.views import View
 from django.shortcuts import redirect, render
 from django.views.generic.base import TemplateView
@@ -23,6 +24,13 @@ class Blog(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tags'] = Tag.objects.all()
+        context['posts'] = Post.objects.all()
+        return context
+
+class Archives(TemplateView):
+    template_name = "blog/archives.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context['posts'] = Post.objects.all()
         return context
 

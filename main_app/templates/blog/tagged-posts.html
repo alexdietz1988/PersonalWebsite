@@ -6,12 +6,14 @@
 
 <h2>Posts in {{tag}} </h2>
 
-{% for post in posts %}
-    <div>
-        <a href={% url "postdetail" post.pk %}><h3>{{post.title}}</h3></a>
-        <p>{{post.text}}</p>
-        <p><em>{{post.created_at}}</em></p>
-    </div>
-{% endfor %}
+{% if user.membership.member %}
+    {% for post in posts %}
+        <div>
+            <a href={% url "postdetail" post.pk %}><h3>{{post.title}}</h3></a>
+            <p>{{post.text}}</p>
+            <p><em>{{post.created_at}}</em></p>
+        </div>
+    {% endfor %}
+{% endif %}
 
 {% endblock %}

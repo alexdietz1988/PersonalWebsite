@@ -35,19 +35,36 @@
 	</div>
 
 	<aside>
+
 		<h3>Sidebar</h3>
 
-		<p>
-			<b>tags</b>: 
-			{% for tag in tags %}
-				{% if tag.posts.all|length > 0 and tag.name != 'private' %}
-					<a href="{% url "tagged-posts" tag.pk %}">{{tag.name}}</a>
+		<section>
+			<h4 class="sidebar-header">Recent posts</h4>
+			<ul class="sidebar-list">
+			{% for post in posts %}
+				{% if post.private == False or user.membership.member and forloop.counter < 10 %}
+					<li><a href="{% url "postdetail" post.pk %}">{{post.title}}</a></li>
 				{% endif %}
 			{% endfor %}
-		</p>
+			</ul>
+			<p><a href={% url "archives" %}>All posts</a></p>
+		</section>
+
+		{% if user.membership.member %}
+		<section>
+			<h4 class="sidebar-header">Tags</h4>
+			<ul class="sidebar-list">
+			{% for tag in tags %}
+				{% if tag.posts.all|length > 0 %}
+					<li><a href="{% url "tagged-posts" tag.pk %}">{{tag.name}}</a></li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+		</section>
+		{% endif %}
 
 		<p>
-			{% if user.is_authenticated and user.membership.member %}
+			{% if user.membership.member %}
 				You are logged in as a member. <div class="button login"><a href="{% url "logout" %}">Logout</a></div>
 			{% elif user.is_authenticated %}
 				You are logged in as a non-member.
