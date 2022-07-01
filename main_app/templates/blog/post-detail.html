@@ -19,11 +19,13 @@
 <h4>Comments</h4>
 {% for comment in post.comments.all %}
     <p>
-        {{comment.body}}
-        <em>{{comment.user}}, {{comment.created_at}}</em>
+        {{comment.body}}<br />
+        <em>{{comment.user}} – {{comment.created_at}}</em>
         {% if user == comment.user %}
-            <a href={% url "delete-comment" post.pk comment.pk %}>Delete Comment</a>
+        <span class="button delete-comment"><a href={% url "delete-comment" post.pk comment.pk %}>Delete Comment</a></span>
         {% endif %}
+        
+        
     </p>
 {% endfor %}
 </div>

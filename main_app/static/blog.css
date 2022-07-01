@@ -28,18 +28,31 @@ aside {
 	border-radius: 10px;
 }
 
-.login {
-	display: inline-block;
-	color: white;
-	background-color: darkslategray;
+.button {
 	padding: 5px;
 	border-radius: 10px;
-	margin-top: 10px;
 }
 
-.login a {
+.button a {
 	color: lightblue;
 }
+
+.login {
+	display: inline;
+	margin-top: 10px;
+	background-color: darkslategray;
+}
+
+.delete-comment {
+	background-color: lightgray;
+	font-size: small;
+	margin: 0 10px;
+}
+
+.delete-comment a {
+	color: black;
+}
+
 
 @media screen and (max-width: 525px) {
 
